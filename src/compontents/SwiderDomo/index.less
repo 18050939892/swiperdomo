@@ -1,0 +1,159 @@
+.swipwer-domo {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 30px;
+    justify-content: start;
+
+    .swiper-container {
+        width: 800px;
+        height: 500px;
+        border: 2px solid #ccc;
+        border-radius: 10px 10px;
+        position: relative;
+        overflow: hidden;
+        background-color: #6b7280;
+
+        > svg {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            z-index: 1;
+            right: 0;
+            top: 220px;
+        }
+
+        > .swiper-container-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 800px;
+            height: 5px;
+
+            > div {
+                float: left;
+                height: 5px;
+                background: blue;
+            }
+
+            > .top-two {
+                background: gray;
+            }
+        }
+
+        > svg:nth-child(2) {
+            left: 0;
+        }
+
+        //这个2不是指svg的第二个而是子元素第二个并且该元素为svg才生效
+
+        > .swiper-container-bottom {
+            background-color: gray;
+            width: 800px;
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            height: 5px;
+
+            > div {
+                float: left;
+                background: blue;
+                height: 5px;
+
+            }
+        }
+
+        > .swiper-container-bottom-number {
+            position: absolute;
+            bottom: 10px;
+            z-index: 1;
+            left: 390px;
+        }
+
+        > .swiper-container-bottom-circle {
+            position: absolute;
+            bottom: 0;
+            width: 220px;
+            left: 305px;
+
+            > .buttom-circle {
+                margin-bottom: 10px;
+                margin-left: 10px;
+                float: left;
+                display: block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50% 50% 50% 50%;
+                background-color: gray;
+                text-align: center;
+            }
+
+            > .pagination-custom-n {
+                width: 20px;
+                height: 20px;
+            }
+
+            .check-circle {
+                background-color: blue;
+            }
+        }
+
+        > .pagination-dynamic-f {
+            display: flex !important;
+            justify-content: center !important;
+            width: 100px !important;
+            left: 345px !important;
+        }
+
+        //与下面的红色样式冲突，所以加上!important
+
+        > .pagination-custom-f {
+            display: block !important;
+            width: 280px !important;
+            left: 260px !important;
+        }
+
+        > .vertical-f {
+            display: block !important;
+            width: 20px !important;
+            left: auto !important;
+            top: 180px !important;
+            right: 10px !important;
+        }
+
+        > ul {
+            margin: 0 0;
+            padding: 0 0;
+            white-space: nowrap;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            .vertical-main {
+                display: block;
+                white-space: wrap;
+            }
+
+            .slides-per-view-main {
+                width: 240px;
+                margin-right: 40px;
+            }
+
+            .space-between-main {
+                margin-right: 20px;
+            }
+
+            > li {
+                display: inline-block;
+                text-align: center;
+                padding-top: 240px;
+                font-size: 20px;
+                width: 800px;
+                height: 260px;
+                background-color: white;
+            }
+        }
+    }
+}
+
+
