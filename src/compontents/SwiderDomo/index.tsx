@@ -8,6 +8,7 @@ interface prop {
     number: number
 }
 
+
 export function SwiperDomo(props: prop) {
     const {title, number} = props
     const SlideList = ['Slide1', 'Slide2', 'Slide3', 'Slide4', 'Slide5', 'Slide6', 'Slide7', 'Slide8', 'Slide9']
@@ -15,7 +16,7 @@ export function SwiperDomo(props: prop) {
     const [state, setState] = useAtom(State)
     const [left, setLeft] = useAtom(Left)
     
-    function enter(event) {
+    function  enter(event: { clientY: number; clientX: number }):void {
         mousePosition.current[2] = mousePosition.current[1] + ((title == 'Vertical' ? event.clientY : event.clientX) - mousePosition.current[0])
         setLeft(prev => {
             const s = [...prev]
@@ -26,7 +27,7 @@ export function SwiperDomo(props: prop) {
     
     function leave() {
         window.removeEventListener('mousemove', enter)
-        const c = Math.round(parseFloat(mousePosition.current[2]) / (title == 'Vertical' ? 500 : title == 'Slides per view' ? 280 : 800))
+        const c = Math.round(parseFloat(String(mousePosition.current[2])) / (title == 'Vertical' ? 500 : title == 'Slides per view' ? 280 : 800))
         setLeft(prev => {
                 const s = [...prev]
                 s[number] = c > 0 ? 0 : (c < -8 ? (-8 * (title == 'Vertical' ? 500 : title == 'Slides per view' ? 280 : (title == 'Space between' ? 820 : 800))) : (c * (title == 'Vertical' ? 500 : title == 'Slides per view' ? 280 : (title == 'Space between' ? 820 : 800))))
@@ -36,9 +37,8 @@ export function SwiperDomo(props: prop) {
         setState('1s left')
         
     }
-    
     return (
-        <div className="swipwer-domo" id={number}>
+        <div className="swipwer-domo" id={number.toString()}>
             <h1>{title}</h1>
             <div
                 className="swiper-container"
@@ -57,9 +57,11 @@ export function SwiperDomo(props: prop) {
                 </div>
                 
                 <svg
-                    t="1744209942982" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    // t="1744209942982"
+                    className="icon" viewBox="0 0 1024 1024" version="1.1"
                     xmlns="http://www.w3.org/2000/svg" p-id="14800" width="200" height="200"
                     onClick={() => {
+                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                         left[number] != 0 ? setLeft(prev => {
                             const s = [...prev]
                             s[number] += 800
@@ -113,7 +115,7 @@ export function SwiperDomo(props: prop) {
                     }}
                 >
                     {
-                        SlideList.map((item, index) => {
+                        SlideList.map((_item, index) => {
                             return <div
                                 className={
                                     `${(index == Math.abs(left[number] / (title == 'Vertical' ? 500 : title == 'Slides per view' ? 280 : (title == 'Space between' ? 820 : 800))) ? (title == 'Pagination custom' ? 'buttom-circle check-circle pagination-custom-n' : 'buttom-circle check-circle') : (title == 'Pagination custom' ? 'buttom-circle pagination-custom-n' : 'buttom-circle'))}`
@@ -127,9 +129,11 @@ export function SwiperDomo(props: prop) {
                     }
                 </div>
                 <svg
-                    t="1744209604715" className="icon" viewBox="0 0 1024 1024" version="1.1"
+                    // t="1744209604715"
+                    className="icon" viewBox="0 0 1024 1024" version="1.1"
                     xmlns="http://www.w3.org/2000/svg" p-id="12149" width="200" height="200"
                     onClick={() => {
+                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                         left[number] >= -5600 ? setLeft(prev => {
                             const s = [...prev]
                             s[number] -= 800
