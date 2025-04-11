@@ -1,4 +1,4 @@
-import {SwiperList} from './compontents/swiderList'
+import {SwiperList} from './compontents/SwiderList'
 import {SwiperDomoList} from './compontents/SwiderDomoList'
 import './App.css'
 function App() {
